@@ -2,10 +2,15 @@
 tags: [development]
 title: List of helpful commands
 created: '2020-05-23T06:58:27.068Z'
-modified: '2020-05-23T16:44:43.618Z'
+modified: '2020-12-15T15:12:34.003Z'
 ---
 
 # List of helpful commands
+
+## Check default shell
+```
+echo $0
+```
 
 ## Linux
 ```
