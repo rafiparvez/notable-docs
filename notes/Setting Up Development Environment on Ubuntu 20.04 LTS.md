@@ -55,5 +55,13 @@ sudo apt install code
 https://linoxide.com/tools/install-use-redshift-ubuntu-16-04/
 
 
+## Install XClip
+Xlip allows copying to clipboard
 
-
+```
+sudo apt-get install xclip
+```
+### Example Usage  
+```
+xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+```
