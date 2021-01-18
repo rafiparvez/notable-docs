@@ -2,7 +2,7 @@
 tags: [development]
 title: Setting Up Development Environment on Ubuntu 20.04 LTS
 created: '2020-05-23T06:24:00.225Z'
-modified: '2020-05-25T16:38:02.296Z'
+modified: '2021-01-18T23:56:32.899Z'
 ---
 
 # Setting Up Development Environment on Ubuntu 20.04 LTS
@@ -49,6 +49,19 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 
 # install VS Code
 sudo apt install code
+```
+
+## Install VIM
+
+```
+sudo apt install vim
+sudo apt-get install vim-gui-common
+sudo apt-get install vim-runtime
+```
+
+## Setup Dotfiles
+```
+https://github.com/rafiparvez/dotfiles
 ```
 
 ## install redshift (screen color temperature adjuster)
