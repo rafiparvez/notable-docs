@@ -2,7 +2,7 @@
 tags: [cuda, machine-learning]
 title: Setting Up Development Environment for Machine Learning
 created: '2020-05-23T17:41:38.481Z'
-modified: '2020-05-25T16:31:13.144Z'
+modified: '2021-01-17T20:15:20.820Z'
 ---
 
 # Setting Up Development Environment for Machine Learning
@@ -30,28 +30,27 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 ```
 
 ```
-# install drivers
+# install drivers and restart
+sudo apt update
+sudo apt upgrade
 
-$ sudo apt update
-$ sudo apt upgrade
+sudo apt install nvidia-driver-440
+sudo apt install nvidia-settings
 
-$ sudo apt install nvidia-driver-440
-$ sudo apt install nvidia-settings
-
-$ sudo reboot
+sudo reboot
 ```  
 
 ## Install Cuda Toolkit
 
 From Nvidia's webside
 ```
-$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
-$ sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-$ wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
-$ sudo dpkg -i cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
-$ sudo apt-key add /var/cuda-repo-10-2-local-10.2.89-440.33.01/7fa2af80.pub
-$ sudo apt-get update
-$ sudo apt-get -y install cuda
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-2-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
 ```
 Then add following lines to `~/.bashrc`  
 ```
@@ -62,33 +61,33 @@ export PATH=$PATH:$CUDA_HOME/bin
   
 Alternatively, you can install the package as follows
 ```
-$ sudo apt update
-$ sudo apt install nvidia-cuda-toolkit
+sudo apt update
+sudo apt install nvidia-cuda-toolkit
 ```
-
+### check cuda toolkit version
 ```
-# check cuda toolkit version
 $ nvcc --version
   nvcc: NVIDIA (R) Cuda compiler driver
-  Copyright (c) 2005-2019 NVIDIA Corporation
-  Built on Wed_Oct_23_19:24:38_PDT_2019
-  Cuda compilation tools, release 10.2, V10.2.89
+  Copyright (c) 2005-2020 NVIDIA Corporation
+  Built on Mon_Nov_30_19:08:53_PST_2020
+  Cuda compilation tools, release 11.2, V11.2.67
+  Build cuda_11.2.r11.2/compiler.29373293_0
 ```
 
 ## Install CuDNN Libraries
 
 CuDNN is a GPU-accelerated library, which has highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers.
 You need to join Nvidia developer membership and download the library from the link 
-https://developer.nvidia.com/rdp/cudnn-download. Omce the package is downloaded, run these commands  
+https://developer.nvidia.com/rdp/cudnn-download. Once the package is downloaded, run these commands  
 ```
 # Install the runtime library
-$ sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn8_8.0.5.39-1+cuda11.1_amd64.deb
 
 # Install the developer library
-$ sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn8-dev_8.0.5.39-1+cuda11.1_amd64.deb
 
 # Install the code samples and dev doc
-$ sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb
+$ sudo dpkg -i libcudnn8-samples_8.0.5.39-1+cuda11.1_amd64.deb
 ```
 ## Install Anaconda  
 
