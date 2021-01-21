@@ -2,7 +2,7 @@
 tags: [development]
 title: Setting Up Development Environment on MacOS
 created: '2020-12-13T06:24:00.225Z'
-modified: '2020-12-22T15:00:52.405Z'
+modified: '2021-01-21T00:19:11.696Z'
 ---
 
 # Setting Up Development Environment on MacOS
@@ -27,7 +27,10 @@ ln -s ~/.dotfiles/VSCode/snippets/ ~/Library/Application\ Support/Code/User/snip
 
 ## Install Rectangle
 Rectangle is a Window management tool
-https://rectangleapp.com/  
+https://rectangleapp.com/
+```
+brew install --cask rectangle
+```
 
 ## Install Tmux
 Tmux is a terminal multiplexer. You can create sessions and create multiple window panes within each session.
