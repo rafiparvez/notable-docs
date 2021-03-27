@@ -9,6 +9,14 @@ modified: '2021-01-21T00:19:11.696Z'
 
 This document describes step by step process of setting up MacOS for development.
 
+
+## Install Homebrew
+Brew is a pkg manager for MacOs.
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## Set Up VS Code
 VS Code is a code editor developed by Microsoft
 
