@@ -2,7 +2,7 @@
 tags: [cuda, machine-learning]
 title: Setting Up Development Environment for Machine Learning
 created: '2020-05-23T17:41:38.481Z'
-modified: '2021-01-17T20:15:20.820Z'
+modified: '2021-06-20T02:55:12.770Z'
 ---
 
 # Setting Up Development Environment for Machine Learning
@@ -46,9 +46,9 @@ From Nvidia's webside
 ```
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
 sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
-wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
-sudo apt-key add /var/cuda-repo-ubuntu2004-11-2-local/7fa2af80.pub
+wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda-repo-ubuntu2004-11-3-local_11.3.1-465.19.01-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-3-local_11.3.1-465.19.01-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-3-local/7fa2af80.pub
 sudo apt-get update
 sudo apt-get -y install cuda
 ```
@@ -81,14 +81,37 @@ You need to join Nvidia developer membership and download the library from the l
 https://developer.nvidia.com/rdp/cudnn-download. Once the package is downloaded, run these commands  
 ```
 # Install the runtime library
-$ sudo dpkg -i libcudnn8_8.0.5.39-1+cuda11.1_amd64.deb
+$ sudo dpkg -i libcudnn8_8.2.1.32-1+cuda11.3_amd64.deb
 
 # Install the developer library
-$ sudo dpkg -i libcudnn8-dev_8.0.5.39-1+cuda11.1_amd64.deb
+$ sudo dpkg -i libcudnn8-dev_8.2.1.32-1+cuda11.3_amd64.deb
 
 # Install the code samples and dev doc
-$ sudo dpkg -i libcudnn8-samples_8.0.5.39-1+cuda11.1_amd64.deb
+$ sudo dpkg -i libcudnn8-samples_8.2.1.32-1+cuda11.3_amd64.deb
 ```
+
+
+### Verifying The Install On Linux
+To verify that cuDNN is installed and is running properly, compile the mnistCUDNN sample located in the /usr/src/cudnn_samples_v8 directory in the Debian file.
+Procedure
+Copy the cuDNN samples to a writable path.
+`$cp -r /usr/src/cudnn_samples_v8/ $HOME`
+
+Go to the writable path.
+`$ cd  $HOME/cudnn_samples_v8/mnistCUDNN`
+
+Compile the mnistCUDNN sample.
+`$make clean && make`
+
+Run the mnistCUDNN sample.
+`$ ./mnistCUDNN`
+
+If cuDNN is properly installed and running on your Linux system, you will see a message similar to the following:
+```
+Test passed!
+```
+
+
 ## Install Anaconda  
 
 ```
@@ -101,7 +124,17 @@ $ chmod +x conda3.sh
 $ bash conda3.sh -u -b
 ```
 
+## Removing Cuda Toolking
+To remove CUDA Toolkit:
+```
+$ sudo apt-get --purge remove "*cublas*" "*cufft*" "*curand*" \
+ "*cusolver*" "*cusparse*" "*npp*" "*nvjpeg*" "cuda*" "nsight*"
+ ```
+To remove NVIDIA Drivers:
+`$ sudo apt-get --purge remove "*nvidia*"`
 
+To clean up the uninstall:
+`$ sudo apt-get autoremove`
 
 
 

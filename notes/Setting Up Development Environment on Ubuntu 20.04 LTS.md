@@ -2,7 +2,7 @@
 tags: [development]
 title: Setting Up Development Environment on Ubuntu 20.04 LTS
 created: '2020-05-23T06:24:00.225Z'
-modified: '2021-01-18T23:56:32.899Z'
+modified: '2021-06-20T03:11:23.045Z'
 ---
 
 # Setting Up Development Environment on Ubuntu 20.04 LTS
@@ -78,3 +78,29 @@ sudo apt-get install xclip
 ```
 xclip -selection clipboard < ~/.ssh/id_ed25519.pub
 ```
+
+## Install Python3
+https://docs.python-guide.org/starting/install3/linux/
+
+### Set Python3 as default Python Version
+
+Check python version on terminal 
+`python --version`
+
+Get root user privileges. On terminal type
+`sudo su`
+
+Write down the root user password.
+Execute this command to switch to python 3.8.
+`update-alternatives --install /usr/bin/python python /usr/bin/python3 1`
+
+Check python version - 
+`python --version`
+
+All Done!
+
+### Install pip
+```
+sudo apt install -y python3-pip
+```
+
